@@ -43,12 +43,19 @@ spring:
 #      client:
 #        url: ${ADMIN_URL}
 
+springdoc:
+  api-docs:
+    path: /api-generator/v3/api-docs #these urls will be used to load the swagger ui of this service by the api gateway
+  swagger-ui:
+    path: /api-generator/swagger-ui.html
+
 eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${SERVICE_HOSTNAME}
   client:
     service-url:
       defaultZone: ${SERVICE_URL}/eureka
-  instance:
-    prefer-ip-address: true
 
 openai:
   model: gpt-3.5-turbo
