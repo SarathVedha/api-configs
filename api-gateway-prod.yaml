@@ -34,11 +34,12 @@ springdoc:
         name: API GENERATOR
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${SERVICE_HOSTNAME}
   client:
     service-url:
       defaultZone: ${SERVICE_URL}/eureka
-  instance:
-    prefer-ip-address: true
 
 management:
   endpoint:
