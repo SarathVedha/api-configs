@@ -23,7 +23,7 @@ spring:
         - id: API-GENERATOR
           uri: lb://API-GENERATOR
           predicates: # need to route manually for swagger
-            - Path=/api-generator/**, /v3/api-docs/**, /v3/**, /api/**, /bot/**, /date/**, /js/**
+            - Path=/api-generator/**, /api-generator/v3/api-docs, /api/**, /bot/**, /date/**, /js/**
 
 springdoc:
   api-docs:
