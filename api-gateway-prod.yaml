@@ -13,44 +13,32 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      # routes:
-      #   - id: api-generator
-      #     uri: lb://api-generator
-      #     predicates:
-      #       - Path=/api-generator/**
-      #     filters:
-      #       - RewritePath=/api-generator/(?<path>.*), /$\{path}
-      #   - id: openapi
-      #     uri: http://localhost:8080
-      #     predicates:
-      #       - Path=/v3/api-docs/**
-      #     filters:
-      #       - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
       globalcors:
         cors-configurations:
           '[/**]':
             allowedOrigins: "*"  # For All Use"*", Known Server App URL you can Mention (React -> http://localhost:3000/)
             allowedMethods: "*"
+            allowed-headers: "*"
+      routes:
+        - id: API-GENERATOR
+          uri: lb://API-GENERATOR
+          predicates: # need to route manually for swagger
+            - Path=/api-generator/v3/api-docs/**, /api/**, /bot/**, /date/**, /js/**
 
-#springdoc:
-#  swagger-ui:
-#    path: /swagger-ui.html
-#    config-url: /v3/api-docs/swagger-config
-#    urls:
-#      - url: /v3/api-docs
-#        name: API Gateway Service
-#      - url: /api-generator/v3/api-docs
-#        name: API GENERATOR
-
-# springdoc:
-#   swagger-ui:
-#    path: /swagger-ui.html
-#    config-url: /v3/api-docs/swagger-config
-    # urls:
-#      - name: api-gateway
-#        url: /v3/api-docs
-      # - name: api-generator
-      #   url: /v3/api-docs/api-generator
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway Service
+        display-name: API GateWay Service
+      - url: /api-generator/v3/api-docs
+        name: API Generator
+        display-name: API Generator Service
 
 eureka:
   instance:
