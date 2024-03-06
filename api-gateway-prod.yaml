@@ -13,19 +13,19 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      routes:
-        - id: api-generator
-          uri: lb://api-generator
-          predicates:
-            - Path=/api-generator/**
-          filters:
-            - RewritePath=/api-generator/(?<path>.*), /$\{path}
-        - id: openapi
-          uri: http://localhost:8080
-          predicates:
-            - Path=/v3/api-docs/**
-          filters:
-            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+      # routes:
+      #   - id: api-generator
+      #     uri: lb://api-generator
+      #     predicates:
+      #       - Path=/api-generator/**
+      #     filters:
+      #       - RewritePath=/api-generator/(?<path>.*), /$\{path}
+      #   - id: openapi
+      #     uri: http://localhost:8080
+      #     predicates:
+      #       - Path=/v3/api-docs/**
+      #     filters:
+      #       - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
       globalcors:
         cors-configurations:
           '[/**]':
@@ -42,15 +42,15 @@ spring:
 #      - url: /api-generator/v3/api-docs
 #        name: API GENERATOR
 
-springdoc:
-  swagger-ui:
+# springdoc:
+#   swagger-ui:
 #    path: /swagger-ui.html
 #    config-url: /v3/api-docs/swagger-config
-    urls:
+    # urls:
 #      - name: api-gateway
 #        url: /v3/api-docs
-      - name: api-generator
-        url: /v3/api-docs/api-generator
+      # - name: api-generator
+      #   url: /v3/api-docs/api-generator
 
 eureka:
   instance:
