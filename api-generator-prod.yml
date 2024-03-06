@@ -47,6 +47,8 @@ eureka:
   client:
     service-url:
       defaultZone: ${SERVICE_URL}/eureka
+  instance:
+    prefer-ip-address: true
 
 openai:
   model: gpt-3.5-turbo
