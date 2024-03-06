@@ -19,11 +19,11 @@ spring:
             allowedOrigins: "*"  # For All Use"*", Known Server App URL you can Mention (React -> http://localhost:3000/)
             allowedMethods: "*"
             allowed-headers: "*"
-      # routes:
-      #   - id: API-GENERATOR
-      #     uri: lb://API-GENERATOR
-      #     predicates: # need to route manually for swagger
-      #       - Path=/api-generator/v3/api-docs
+#      routes:
+#        - id: API-GENERATOR
+#          uri: lb://API-GENERATOR
+#          predicates: # need to route manually for swagger
+#            - Path=/api-generator/v3/api-docs, /api/**, /bot/**, /date/**, /js/**
 
 springdoc:
   api-docs:
